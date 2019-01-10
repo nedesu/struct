@@ -11,7 +11,6 @@
 
 class LinkedList:
     head = None
-    tail = None
 
     length = 0
 
