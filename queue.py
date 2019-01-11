@@ -1,4 +1,5 @@
 from linkedlist import LinkedList
+import copy
 
 class Queue:
     def __init__(self):
@@ -20,6 +21,9 @@ class Queue:
 
     def peek(self):
         return self.queue.element_at(self.queue.length -1)
+
+    def copy(self):
+        return copy.deepcopy(self)
 
 class PriorityQueue(Queue):
     def enqueue(self, value, priority):

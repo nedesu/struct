@@ -9,6 +9,8 @@
 #element_at
 #as_array
 
+import copy
+
 class LinkedList:
     head = None
 
@@ -21,8 +23,7 @@ class LinkedList:
 
     def append(self, value):
         node = self.Node(value)
-
-        if not self.head:
+        if self.is_empty():
             self.head = node
             self.length += 1
             return True
@@ -81,6 +82,9 @@ class LinkedList:
         return element
 
     def search_first(self, value):
+        if self.is_empty():
+            return False
+
         node = self.head
         index = 0
 
@@ -96,6 +100,9 @@ class LinkedList:
         return False
 
     def search_all(self, value):
+        if self.is_empty():
+            return False
+
         node = self.head
         list = []
 
@@ -145,6 +152,9 @@ class LinkedList:
             list.append(node.value)
 
         return list
+
+    def copy(self):
+        return copy.deepcopy(self)
 
     def is_empty(self):
         return self.length == 0

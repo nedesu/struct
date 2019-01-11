@@ -1,4 +1,5 @@
 from linkedlist import LinkedList
+import copy
 
 class Stack:
     def __init__(self):
@@ -12,3 +13,6 @@ class Stack:
 
     def peek(self):
         return self.stack.element_at(self.stack.length -1)
+
+    def copy(self):
+        return copy.deepcopy(self)
