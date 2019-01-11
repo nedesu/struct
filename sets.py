@@ -15,7 +15,7 @@ class Sets:
             return self.set.remove_at(self.set.search_first(value))
         return False
 
-    def union(self, other_sets):
+    def union(self, *other_sets):
         new_set = self.copy()
         for set in other_sets:
             for value in set.values():
