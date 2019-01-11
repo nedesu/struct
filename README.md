@@ -9,6 +9,8 @@
 ### Поиск по списку:
 - первое вхождение search_first(value)
 - все вхождения search_all(value) возвращает массив индексов
+- первое вхождение с поиском в массиве search_first_in_array(index, value)
+- все вхождения с поиском в массиве search_all_in_array(index, value)
 
 ### Получение данных:
 - значение элемента по индексу element_at(index)
