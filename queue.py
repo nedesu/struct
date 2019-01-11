@@ -5,13 +5,13 @@ class Queue:
         self.queue = LinkedList()
 
     def enqueue(self, value):
-        return self.queue.append(value)
+        return self.queue.add_at(0, value)
 
     def dequeue(self):
         return self.queue.pop()
 
     def enqueue_first(self, value):
-        return self.queue.add_at(0, value)
+        return self.queue.append(value)
 
     def dequeue_last(self):
         element = self.queue.element_at(0)
