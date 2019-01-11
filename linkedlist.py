@@ -99,6 +99,27 @@ class LinkedList:
 
         return False
 
+
+    def search_first_in_array(self, index, value):
+        if self.is_empty():
+            return False
+
+        node = self.head
+        i = 0
+
+        if node.value[index] == value:
+            print('value')
+            return 0
+
+        while node.next:
+            i += 1
+            node = node.next
+            if node.value[index] == value:
+                return i
+
+        return False
+
+
     def search_all(self, value):
         if self.is_empty():
             return False
@@ -117,6 +138,32 @@ class LinkedList:
             node = node.next
             if node.value == value:
                 list.append(index)
+                has_element = True
+
+        if not has_element:
+            return False
+
+        return list
+
+
+    def search_all_in_array(self, index, value):
+        if self.is_empty():
+            return False
+
+        node = self.head
+        list = []
+
+        if node.value[index] == value:
+            list.append(0)
+
+        i = 0
+        has_element = False
+
+        while node.next:
+            i += 1
+            node = node.next
+            if node.value[index] == value:
+                list.append(i)
                 has_element = True
 
         if not has_element:
