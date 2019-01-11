@@ -145,3 +145,6 @@ class LinkedList:
             list.append(node.value)
 
         return list
+
+    def is_empty(self):
+        return self.length == 0
