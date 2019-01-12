@@ -35,6 +35,7 @@ class LinkedList:
         self.length += 1
         return True
 
+
     def add_at(self, index, value):
         if index > self.length:
             return False
@@ -56,9 +57,10 @@ class LinkedList:
         self.length += 1
         return True
 
+
     def remove_at(self, index):
         if not type(index) is int:
-            index = self.key(index)
+            index = self.search_key(index)
 
         if not index:
             return False
@@ -81,10 +83,51 @@ class LinkedList:
 
         return True
 
+
+    def rewrite(self, index, value):
+        if not type(index) is int:
+            index = self.search_key(index)
+
+        if index >= self.length:
+            return False
+
+        node = self.head
+
+
+        for i in range(index):
+            node = node.next
+
+        node.value = value
+        return True
+
+
     def pop(self):
         element = self.element_at(self.length - 1)
         self.remove_at(self.length - 1)
         return element
+
+
+    def search_key(self, key):
+        if self.is_empty():
+            return False
+
+        node = self.head
+
+        if hasattr(node, 'key'):
+            if node.key is key:
+                return 0
+
+        index = 0
+
+        while node.next:
+            index += 1
+            node = node.next
+            if hasattr(node, 'key'):
+                if node.key is key:
+                    return index
+
+        return False
+
 
     def search_first(self, value):
         if self.is_empty():

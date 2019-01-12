@@ -3,7 +3,8 @@
 ### Изменение списка:
 - добавить элемент по индексу add_at(index, value)
 - добавить в конец append (value) | append(key, value)
-- удалить элемент remove_at(int index) | remove_at(str index)
+- удалить элемент remove_at(int index) | remove_at(any key)
+- перезаписать элемент rewrite(int index) | rewrite(any key)
 - забрать элемент pop()
 
 ### Поиск по списку:
