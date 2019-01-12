@@ -1,14 +1,3 @@
-#append
-#add_at
-#remove_at
-#pop
-
-#search_first
-#search_all
-
-#element_at
-#as_array
-
 import copy
 
 class LinkedList:
@@ -17,16 +6,26 @@ class LinkedList:
     length = 0
 
     class Node:
-        def __init__(self, value):
-            self.value = value
+        def __init__(self, key, value = False):
+            if value:
+                self.key = key
+                self.value = value
+            else:
+                self.value = key
             self.next = None
 
-    def append(self, value):
-        node = self.Node(value)
+
+    def append(self, keyvalue, value = False):
+        node = self.Node(keyvalue, value)
+
         if self.is_empty():
             self.head = node
             self.length += 1
             return True
+
+        if value:
+            if self.key(keyvalue):
+                return False
 
         current_node = self.head
         while current_node.next:
@@ -58,6 +57,12 @@ class LinkedList:
         return True
 
     def remove_at(self, index):
+        if not type(index) is int:
+            index = self.key(index)
+
+        if not index:
+            return False
+
         if index >= self.length:
             return False
 
@@ -108,7 +113,6 @@ class LinkedList:
         i = 0
 
         if node.value[index] == value:
-            print('value')
             return 0
 
         while node.next:
@@ -172,9 +176,24 @@ class LinkedList:
         return list
 
 
+    def key(self, key):
+        if self.is_empty():
+            return False
+
+        node = self.head
+
+        while node.next:
+            if hasattr(node, 'key'):
+                if node.key is key:
+                    return node.value
+            node = node.next
+        return False
 
 
     def element_at(self, index):
+        if not type(index) is int:
+            return self.key(index)
+
         if index >= self.length:
             return False
 
@@ -185,10 +204,25 @@ class LinkedList:
 
         return node.value
 
+    def as_array_key(self):
+        list = []
+
+        if self.is_empty():
+            return False
+
+        node = self.head
+        list.append((node.key, node.value) if hasattr(node, 'key') else node.value)
+
+        while node.next:
+            node = node.next
+            list.append((node.key, node.value) if hasattr(node, 'key') else node.value)
+
+        return list
+
     def as_array(self):
         list = []
 
-        if not self.head:
+        if self.is_empty():
             return False
 
         node = self.head
@@ -199,6 +233,7 @@ class LinkedList:
             list.append(node.value)
 
         return list
+
 
     def copy(self):
         return copy.deepcopy(self)
