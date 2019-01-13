@@ -6,13 +6,13 @@ class Stack:
         self.stack = LinkedList()
 
     def push(self, value):
-        return self.stack.append(value)
+        return self.stack.add(value)
 
     def pop(self):
         return self.stack.pop()
 
     def peek(self):
-        return self.stack.element_at(self.stack.length -1)
+        return self.stack.element(self.stack.length -1)
 
     def copy(self):
         return copy.deepcopy(self)

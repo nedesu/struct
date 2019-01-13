@@ -7,12 +7,12 @@ class Sets:
 
     def add(self, value):
         if not self.has(value):
-            return self.set.append(value)
+            return self.set.add(value)
         return False
 
     def remove(self, value):
         if self.has(value):
-            return self.set.remove_at(self.set.search_first(value))
+            return self.set.remove(self.set.search_first(value))
         return False
 
     def union(self, *other_sets):

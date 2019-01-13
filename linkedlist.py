@@ -11,7 +11,7 @@ class LinkedList:
             self.next = None
 
 
-    def append(self, value):
+    def add(self, value):
         node = self.Node(value)
 
         if self.is_empty():
@@ -50,7 +50,7 @@ class LinkedList:
         return True
 
 
-    def remove_at(self, index):
+    def remove(self, index):
         if index >= self.length:
             return False
 
@@ -84,31 +84,9 @@ class LinkedList:
 
 
     def pop(self):
-        element = self.element_at(self.length - 1)
-        self.remove_at(self.length - 1)
+        element = self.element(self.length - 1)
+        self.remove(self.length - 1)
         return element
-
-
-    def search_key(self, key):
-        if self.is_empty():
-            return False
-
-        node = self.head
-
-        if hasattr(node, 'key'):
-            if node.key is key:
-                return 0
-
-        index = 0
-
-        while node.next:
-            index += 1
-            node = node.next
-            if hasattr(node, 'key'):
-                if node.key is key:
-                    return index
-
-        return False
 
 
     def search_first(self, value):
@@ -155,12 +133,12 @@ class LinkedList:
 
         node = self.head
         list = []
-
-        if node.value == value:
-            list.append(0)
-
         index = 0
         has_element = False
+
+        if node.value == value:
+            list.append(index)
+            has_element = True
 
         while node.next:
             index += 1
@@ -181,12 +159,12 @@ class LinkedList:
 
         node = self.head
         list = []
+        i = 0
+        has_element = False
 
         if node.value[index] == value:
             list.append(0)
-
-        i = 0
-        has_element = False
+            has_element == True
 
         while node.next:
             i += 1
@@ -201,7 +179,7 @@ class LinkedList:
         return list
 
 
-    def element_at(self, index):
+    def element(self, index):
         if index >= self.length:
             return False
 
