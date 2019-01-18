@@ -9,18 +9,20 @@ class Queue:
         return self.queue.add_at(0, value)
 
     def get(self):
-        return self.queue.pop()
+        element = self.queue[-1]
+        del self.queue[-1]
+        return element
 
-    def add_fistr(self, value):
+    def add_first(self, value):
         return self.queue.add(value)
 
     def get_last(self):
-        element = self.queue.element(0)
-        self.queue.remove(0)
+        element = self.queue[0]
+        del self.queue[0]
         return element
 
     def peek(self):
-        return self.queue.element(self.queue.length -1)
+        return self.queue[-1]
 
     def copy(self):
         return copy.deepcopy(self)

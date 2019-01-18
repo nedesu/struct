@@ -69,6 +69,9 @@ class AssocLinkedList(LinkedList):
 
 
     def element(self, key):
+        if self.empty():
+            return False
+
         node = self.head
 
         if node.key is key:
@@ -178,3 +181,25 @@ class AssocLinkedList(LinkedList):
                 return index
             index += 1
         return False
+
+
+    def as_assoc(self):
+        if self.empty():
+            return Null
+
+        list = []
+        node = self.head
+
+        list.append({node.key: node.value})
+
+        while node.next:
+            node = node.next
+            list.append({node.key: node.value})
+
+        return list
+
+
+    def __setitem__(self, key, value):
+        if not self.element(key):
+            return self.add(key, value)
+        return self.rewrite(value, value)
