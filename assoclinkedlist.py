@@ -53,22 +53,28 @@ class AssocLinkedList(LinkedList):
         return False
 
 
-    def rewrite(self, key, value):
+    def rewrite(self, key, value, append = False):
         if self.empty():
             return False
 
         node = self.head
+        if node.key is key:
+            node.value = value
+            return True
 
         while node.next:
+            node = node.next
             if node.key is key:
                 node.value = value
                 return True
-            node = node.next
 
-        return False
+        return False if not append else self.add(key, value)
 
 
     def element(self, key):
+        if self.empty():
+            return False
+
         node = self.head
 
         if node.key is key:
@@ -178,3 +184,28 @@ class AssocLinkedList(LinkedList):
                 return index
             index += 1
         return False
+
+
+    def as_assoc(self):
+        list = []
+
+        if self.empty():
+            return None
+
+        node = self.head
+        list.append({node.key: str(node.value)})
+
+        while node.next:
+            node = node.next
+            list.append({node.key: str(node.value)})
+
+        return list
+
+    def __getitem__(self, key):
+        return self.element(key)
+
+
+    def __setitem__(self, key, value):
+        if self.empty():
+            return self.add(key, value)
+        return self.rewrite(key, value, True)

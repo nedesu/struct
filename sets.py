@@ -63,5 +63,8 @@ class Sets:
     def __str__(self):
         return '{}'.format(self.set.as_array())
 
+    def __contains__(self, value):
+        return self.has(value)
+
     def copy(self):
         return copy.deepcopy(self)

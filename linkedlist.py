@@ -51,6 +51,9 @@ class LinkedList:
 
 
     def remove(self, index):
+        if index < 0:
+            index = self.length + index
+
         if index >= self.length:
             return False
 
@@ -71,6 +74,9 @@ class LinkedList:
 
 
     def rewrite(self, index, value):
+        if index < 0:
+            index = self.length + index
+
         if index >= self.length:
             return False
 
@@ -83,12 +89,6 @@ class LinkedList:
         return True
 
 
-    def pop(self):
-        element = self.element(self.length - 1)
-        self.remove(self.length - 1)
-        return element
-
-
     def search_first(self, value):
         if self.empty():
             return False
@@ -96,13 +96,13 @@ class LinkedList:
         node = self.head
         index = 0
 
-        if node.value == value:
+        if node.value is value:
             return 0
 
         while node.next:
             index += 1
             node = node.next
-            if node.value == value:
+            if node.value is value:
                 return index
 
         return False
@@ -115,13 +115,13 @@ class LinkedList:
         node = self.head
         i = 0
 
-        if node.value[index] == value:
+        if node.value[index] is value:
             return 0
 
         while node.next:
             i += 1
             node = node.next
-            if node.value[index] == value:
+            if node.value[index] is value:
                 return i
 
         return False
@@ -136,14 +136,14 @@ class LinkedList:
         index = 0
         has_element = False
 
-        if node.value == value:
+        if node.value is value:
             list.append(index)
             has_element = True
 
         while node.next:
             index += 1
             node = node.next
-            if node.value == value:
+            if node.value is value:
                 list.append(index)
                 has_element = True
 
@@ -162,14 +162,14 @@ class LinkedList:
         i = 0
         has_element = False
 
-        if node.value[index] == value:
+        if node.value[index] is value:
             list.append(0)
             has_element == True
 
         while node.next:
             i += 1
             node = node.next
-            if node.value[index] == value:
+            if node.value[index] is value:
                 list.append(i)
                 has_element = True
 
@@ -180,6 +180,9 @@ class LinkedList:
 
 
     def element(self, index):
+        if index < 0:
+            index = self.length + index
+
         if index >= self.length:
             return False
 
@@ -195,20 +198,36 @@ class LinkedList:
         list = []
 
         if self.empty():
-            return False
+            return None
 
         node = self.head
-        list.append(node.value)
+        list.append(str(node.value) if not type(node.value) is int else node.value)
 
         while node.next:
             node = node.next
-            list.append(node.value)
+            list.append(str(node.value) if not type(node.value) is int else node.value)
 
         return list
 
 
     def __str__(self):
         return '{}'.format(self.as_array())
+
+
+    def __getitem__(self, index):
+        return self.element(index)
+
+
+    def __setitem__(self, index, value):
+        return self.rewrite(index, value)
+
+
+    def __delitem__(self, index):
+        return self.remove(index)
+
+
+    def __len__(self):
+        return self.length
 
 
     def copy(self):
