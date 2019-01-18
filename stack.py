@@ -5,14 +5,16 @@ class Stack:
     def __init__(self):
         self.stack = LinkedList()
 
-    def push(self, value):
+    def add(self, value):
         return self.stack.add(value)
 
-    def pop(self):
-        return self.stack.pop()
+    def get(self):
+        element = self.stack[-1]
+        del self.stack[-1]
+        return element
 
     def peek(self):
-        return self.stack.element(self.stack.length -1)
+        return self.stack[-1]
 
     def copy(self):
         return copy.deepcopy(self)

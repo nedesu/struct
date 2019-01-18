@@ -29,6 +29,9 @@ class LinkedList:
 
 
     def add_at(self, index, value):
+        if index < 0:
+            index = self.length + index
+
         if index > self.length:
             return False
 
@@ -51,6 +54,9 @@ class LinkedList:
 
 
     def remove(self, index):
+        if index < 0:
+            index = self.length + index
+
         if index >= self.length:
             return False
 
@@ -71,6 +77,9 @@ class LinkedList:
 
 
     def rewrite(self, index, value):
+        if index < 0:
+            index = self.length + index
+
         if index >= self.length:
             return False
 
@@ -81,12 +90,6 @@ class LinkedList:
 
         node.value = value
         return True
-
-
-    def pop(self):
-        element = self.element(self.length - 1)
-        self.remove(self.length - 1)
-        return element
 
 
     def search_first(self, value):
@@ -180,6 +183,12 @@ class LinkedList:
 
 
     def element(self, index):
+        if self.empty():
+            return False
+
+        if index < 0:
+            index = self.length + index
+
         if index >= self.length:
             return False
 
@@ -210,6 +219,15 @@ class LinkedList:
     def __str__(self):
         return '{}'.format(self.as_array())
 
+
+    def __getitem__(self, index):
+        return self.element(index)
+
+    def __setitem__(self, index, value):
+        return self.rewrite(index, value)
+
+    def __delitem__(self, index):
+        return self.remove(index)
 
     def copy(self):
         return copy.deepcopy(self)
