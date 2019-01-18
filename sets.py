@@ -60,5 +60,8 @@ class Sets:
     def values(self):
         return self.set.as_array()
 
+    def __str__(self):
+        return '{}'.format(self.set.as_array())
+
     def copy(self):
         return copy.deepcopy(self)

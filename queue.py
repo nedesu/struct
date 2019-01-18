@@ -5,16 +5,16 @@ class Queue:
     def __init__(self):
         self.queue = LinkedList()
 
-    def enqueue(self, value):
+    def add(self, value):
         return self.queue.add_at(0, value)
 
-    def dequeue(self):
+    def get(self):
         return self.queue.pop()
 
-    def enqueue_first(self, value):
+    def add_fistr(self, value):
         return self.queue.add(value)
 
-    def dequeue_last(self):
+    def get_last(self):
         element = self.queue.element(0)
         self.queue.remove(0)
         return element
@@ -25,8 +25,11 @@ class Queue:
     def copy(self):
         return copy.deepcopy(self)
 
+    def __str__(self):
+        return '{}'.format(self.queue.as_array())
+
 class PriorityQueue(Queue):
-    def enqueue(self, value, priority):
+    def add(self, value, priority):
         if self.queue.is_empty():
             return self.queue.add((value, priority))
 
@@ -39,7 +42,7 @@ class PriorityQueue(Queue):
         return self.queue.add((value, priority))
 
 
-    def enqueue_first(self, value, priority):
+    def add_first(self, value, priority):
         if self.queue.is_empty():
             return self.queue.add((value, priority))
 

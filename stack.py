@@ -16,3 +16,6 @@ class Stack:
 
     def copy(self):
         return copy.deepcopy(self)
+
+    def __str__(self):
+        return '{}'.format(self.stack.as_array())

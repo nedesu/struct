@@ -207,6 +207,10 @@ class LinkedList:
         return list
 
 
+    def __str__(self):
+        return '{}'.format(self.as_array())
+
+
     def copy(self):
         return copy.deepcopy(self)
 

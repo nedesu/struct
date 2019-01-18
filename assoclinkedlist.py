@@ -10,7 +10,7 @@ class AssocLinkedList(LinkedList):
     def add(self, key, value):
         node = self.Node(key, value)
 
-        if self.is_empty():
+        if self.empty():
             self.head = node
             self.length += 1
             return True
@@ -33,7 +33,7 @@ class AssocLinkedList(LinkedList):
 
 
     def remove(self, key):
-        if self.is_empty() or not self.element(key):
+        if self.empty() or not self.element(key):
             return False
 
         node = self.head
@@ -54,7 +54,7 @@ class AssocLinkedList(LinkedList):
 
 
     def rewrite(self, key, value):
-        if self.is_empty():
+        if self.empty():
             return False
 
         node = self.head
@@ -87,7 +87,7 @@ class AssocLinkedList(LinkedList):
 
 
     def search_first(self, value):
-        if self.is_empty():
+        if self.empty():
             return False
 
         node = self.head
@@ -102,7 +102,7 @@ class AssocLinkedList(LinkedList):
 
 
     def search_first_in_array(self, index, value):
-        if self.is_empty():
+        if self.empty():
             return False
 
         node = self.head
@@ -117,7 +117,7 @@ class AssocLinkedList(LinkedList):
 
 
     def search_all(self, value):
-        if self.is_empty():
+        if self.empty():
             return False
 
         node = self.head
@@ -140,7 +140,7 @@ class AssocLinkedList(LinkedList):
 
 
     def search_all_in_array(self, index, value):
-        if self.is_empty():
+        if self.empty():
             return False
 
         node = self.head
@@ -163,7 +163,7 @@ class AssocLinkedList(LinkedList):
 
 
     def get_index(self, key):
-        if self.is_empty():
+        if self.empty():
             return False
 
         node = self.head
