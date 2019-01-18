@@ -14,7 +14,7 @@ class LinkedList:
     def add(self, value):
         node = self.Node(value)
 
-        if self.is_empty():
+        if self.empty():
             self.head = node
             self.length += 1
             return True
@@ -90,7 +90,7 @@ class LinkedList:
 
 
     def search_first(self, value):
-        if self.is_empty():
+        if self.empty():
             return False
 
         node = self.head
@@ -109,7 +109,7 @@ class LinkedList:
 
 
     def search_first_in_array(self, index, value):
-        if self.is_empty():
+        if self.empty():
             return False
 
         node = self.head
@@ -128,7 +128,7 @@ class LinkedList:
 
 
     def search_all(self, value):
-        if self.is_empty():
+        if self.empty():
             return False
 
         node = self.head
@@ -154,7 +154,7 @@ class LinkedList:
 
 
     def search_all_in_array(self, index, value):
-        if self.is_empty():
+        if self.empty():
             return False
 
         node = self.head
@@ -194,7 +194,7 @@ class LinkedList:
     def as_array(self):
         list = []
 
-        if self.is_empty():
+        if self.empty():
             return False
 
         node = self.head
@@ -210,5 +210,5 @@ class LinkedList:
     def copy(self):
         return copy.deepcopy(self)
 
-    def is_empty(self):
+    def empty(self):
         return self.length == 0
