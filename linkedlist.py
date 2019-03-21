@@ -216,6 +216,69 @@ class LinkedList:
         return list
 
 
+    def join(self, delimeter):
+        result = ''
+
+        if self.empty():
+            return False
+
+        node = self.head
+        result += str(node.value)
+
+        while node.next:
+            node = node.next
+            result += str(delimeter) + str(node.value)
+
+        return result
+
+
+    def slice(self, start = False, end = False):
+        if not start:
+            return self.copy()
+
+        if self.empty():
+            return False
+
+        if self.length < start:
+            return False
+
+        result = LinkedList()
+
+        node = self.head
+        index = 0
+        if start == 0:
+            result.add(node.value)
+
+        while node.next:
+            node = node.next
+            index += 1
+            if index < start:
+                continue
+
+            if not end or index <= end:
+                result.add(node.value)
+
+        return result
+
+
+    def revers(self):
+        result = LinkedList()
+
+        if self.empty():
+            return False
+
+        node = self.head
+        result.add(node.value)
+
+        while node.next:
+            node = node.next
+            result.add_at(0, node.value)
+
+        self.head = result.head
+
+        return True
+
+
     def __str__(self):
         return '{}'.format(self.as_array())
 
